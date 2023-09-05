@@ -1,0 +1,14 @@
+diff --git a/node_modules/nest-mongo-query-parser/dist/lib/query/mongo.query.js b/node_modules/nest-mongo-query-parser/dist/lib/query/mongo.query.js
+index 39a0db7..f471fbf 100644
+--- a/node_modules/nest-mongo-query-parser/dist/lib/query/mongo.query.js
++++ b/node_modules/nest-mongo-query-parser/dist/lib/query/mongo.query.js
+@@ -178,7 +178,8 @@ function getSimpleFilterValue(filter) {
+     if (filter === 'true' || filter === 'false') {
+         return filter === 'true';
+     }
+-    const value = string_util_1.StringUtils.cleanString(filter, /[^\w\s@.-:\u0600-\u06FF]/g);
++    // const value = string_util_1.StringUtils.cleanString(filter, /[^\w\s@.-:\u0600-\u06FF]/g);
++    const value = string_util_1.StringUtils.cleanString(filter, /\*/g);
+     let $regex = value;
+     if (filter.indexOf('*') === -1) {
+         return filter;
